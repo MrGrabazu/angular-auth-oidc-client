@@ -304,6 +304,7 @@ describe('OidcSecurityService', () => {
         const logoffUrl = 'http://some_logoff_url';
 
         spyOn(oidcSecurityService, 'createEndSessionUrl').and.returnValue(logoffUrl);
+        const redirectToSpy = spyOn(oidcSecurityService, 'redirectTo');
 
         let hasBeenCalled = false;
 
@@ -313,6 +314,7 @@ describe('OidcSecurityService', () => {
         });
 
         expect(hasBeenCalled).toEqual(true);
+        expect(redirectToSpy).not.toHaveBeenCalled();
     });
 
     it('logoff should redirect', () => {
